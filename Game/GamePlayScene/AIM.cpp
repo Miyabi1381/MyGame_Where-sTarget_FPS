@@ -1,0 +1,73 @@
+#include "AIM.h"
+#include "Game/Screen.h"
+
+
+// コンストラクタ
+AIM::AIM()
+	: m_shot{ false }
+	, m_position{ 0}
+{
+}
+
+
+// デストラクタ
+AIM::~AIM()
+{
+}
+
+
+// 初期化処理
+void AIM::Initialize(Vector2D position)
+{
+	// 位置の初期化
+	m_position = position;
+}
+
+
+// 更新処理
+void AIM::Update(int keyCondition, int keyTrigger)
+{
+	// マウスの座標を取得する
+	int mouseX{}, mouseY{};
+	GetMousePoint(&mouseX, &mouseY);
+
+	// マウスの位置に画像を表示する
+	m_position.x = static_cast<float>(mouseX) - AIM::SIZE / 2;
+	m_position.y = static_cast<float>(mouseY) - AIM::SIZE / 2;
+
+	// 左クリックされたら
+	if (keyCondition & MOUSE_INPUT_LEFT)
+	{
+		// 射撃する
+		m_shot = true;
+	}
+}
+
+
+// 描画処理
+void AIM::Render(int ghWheresTarget)
+{
+	// カーソルの描画
+	DrawRectExtendGraph(static_cast<int>(m_position.x), static_cast<int>(m_position.y), 
+						static_cast<int>(m_position.x + AIM::SIZE), static_cast<int>(m_position.y + AIM::SIZE),
+					    0, 0, 64, 64,
+					    ghWheresTarget, TRUE);
+
+}
+
+
+// 終了処理
+void AIM::Finalize()
+{
+}
+
+
+// プレイヤーの中心の位置を取得する関数
+Vector2D AIM::GetCenterPosition()
+{
+	return Vector2D
+	{
+		m_position.x + AIM::SIZE / 2,
+		m_position.y + AIM::SIZE / 2
+	};
+}

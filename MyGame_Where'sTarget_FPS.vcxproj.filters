@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\GameLibTime.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\TitleScene\TitleScene.cpp">
+      <Filter>Game\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GamePlayScene\AIM.cpp">
+      <Filter>Game\GamePlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GamePlayScene\GamePlayScene.cpp">
+      <Filter>Game\GamePlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GamePlayScene\PointOfImpact.cpp">
+      <Filter>Game\GamePlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GamePlayScene\Target.cpp">
+      <Filter>Game\GamePlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameOverScene\GameOverScene.cpp">
+      <Filter>Game\GameOverScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\NumberRenderer.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="EmbeddedResources\Resource.h">
+      <Filter>EmbeddedResources</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Screen.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\DebugHelper.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\GameLib.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\GameLibTime.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\MemoryLeakDetector.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\TitleScene\TitleScene.h">
+      <Filter>Game\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GamePlayScene\AIM.h">
+      <Filter>Game\GamePlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GamePlayScene\GamePlayScene.h">
+      <Filter>Game\GamePlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GamePlayScene\PointOfImpact.h">
+      <Filter>Game\GamePlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GamePlayScene\Target.h">
+      <Filter>Game\GamePlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameOverScene\GameOverScene.h">
+      <Filter>Game\GameOverScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\NumberRenderer.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameMath.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="EmbeddedResources\Icon\Game.ico">
+      <Filter>EmbeddedResources\Icon</Filter>
+    </Image>
+    <Image Include="Resources\Textures\TridentLogo.png">
+      <Filter>Resources\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="EmbeddedResources">
+      <UniqueIdentifier>{11eb5b67-fd4a-44d9-9d52-55f0bbfbb56c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EmbeddedResources\Icon">
+      <UniqueIdentifier>{617a3f6c-4d2a-4091-850d-1de8e45705ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{a8a73281-0c5a-439f-afcb-d61fd1d8fac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{2b5c364a-e02f-4a78-bf05-c300e2886870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{33170bee-e560-4946-8cc5-24377d082a86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Sounds">
+      <UniqueIdentifier>{f1c68681-52f6-41db-a2f8-4a3a6de3c163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Textures">
+      <UniqueIdentifier>{cedda5f5-2620-41df-b8c7-d995ac6e6e6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Fonts">
+      <UniqueIdentifier>{5b7610db-3e53-4d9f-9afe-6106fd48c71c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GamePlayScene">
+      <UniqueIdentifier>{4090d6ff-a68f-4f45-a363-ad9dc4425df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\TitleScene">
+      <UniqueIdentifier>{2f1c330b-7d96-49ed-bedd-e6c2cc575f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameOverScene">
+      <UniqueIdentifier>{639f67b3-dd88-4d4e-82cc-77f8c5d36c0d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="EmbeddedResources\Resource.rc">
+      <Filter>EmbeddedResources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sounds\SE00.ogg">
+      <Filter>Resources\Sounds</Filter>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

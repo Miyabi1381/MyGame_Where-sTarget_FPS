@@ -1,0 +1,61 @@
+﻿<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>ゲーム アプリケーション(DxLib) Unicode版</Name>
+    <Description>DXライブラリを使用したゲーム アプリケーションを作成するためのプロジェクトです。&#10;ゲームサイエンス学科１年で使用します。&#10;更新日： 2025/04/01</Description>
+    <ProjectType>VC</ProjectType>
+    <LanguageTag>cpp</LanguageTag>
+    <PlatformTag>windows</PlatformTag>
+    <ProjectTypeTag>games</ProjectTypeTag>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Game</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>Trident.ico</Icon>
+  </TemplateData>
+  
+  
+  <TemplateContent>
+    <Project ReplaceParameters="true" File="GameAppTemplate(DxLib)_Unicode.vcxproj" >
+      <ProjectItem ReplaceParameters="true" TargetFileName="$projectname$.vcxproj.filters"> GameAppTemplate(DxLib)_Unicode.vcxproj.filters </ProjectItem>
+      
+      <!-- プリコンパイル済みヘッダー -->
+      <ProjectItem> pch.cpp </ProjectItem>
+      <ProjectItem> pch.h   </ProjectItem>
+      
+      <!-- メイン -->
+      <ProjectItem> WinMain.cpp </ProjectItem>
+      
+      <!-- ゲーム -->
+      <Folder Name="Game">
+        <ProjectItem> Game.cpp </ProjectItem>
+        <ProjectItem> Game.h   </ProjectItem>
+        <ProjectItem> Screen.h </ProjectItem>
+      </Folder>
+      
+      <!-- ライブラリ -->
+      <Folder Name="Library">
+        <ProjectItem> DebugHelper.h        </ProjectItem>
+        <ProjectItem> GameLib.h            </ProjectItem>
+        <ProjectItem> GameLibTime.cpp      </ProjectItem>
+        <ProjectItem> GameLibTime.h        </ProjectItem>
+        <ProjectItem> MemoryLeakDetector.h </ProjectItem>
+      </Folder>
+      
+      <!-- 埋め込みリソース -->
+      <Folder Name="EmbeddedResources">
+        <ProjectItem> Resource.h    </ProjectItem>
+        <ProjectItem> Resource.rc   </ProjectItem>
+        <ProjectItem> Icon\Game.ico </ProjectItem>
+      </Folder>
+      
+      <!-- リソース -->
+      <Folder Name="Resources">
+        <ProjectItem> Sounds\SE00.ogg          </ProjectItem>
+        <ProjectItem> Textures\TridentLogo.png </ProjectItem>
+      </Folder>
+      
+    </Project>
+  </TemplateContent>
+</VSTemplate>
