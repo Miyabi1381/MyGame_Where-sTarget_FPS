@@ -25,9 +25,6 @@ class AIM
 	// ƒNƒ‰ƒX’è”‚ÌéŒ¾ ---------------------------------------------
 public:
 
-	// ”­Ë‚µ‚½‚©‚Ç‚¤‚©
-	bool m_shot;
-
 	// ‘å‚«‚³
 	static constexpr float SIZE = 32.0f;
 

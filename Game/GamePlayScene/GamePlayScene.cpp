@@ -38,33 +38,36 @@ void GamePlayScene::Initialize()
 // 更新処理
 void GamePlayScene::Update(int keyCondition, int keyTrigger)
 {
-	// 照準の更新
-	m_AIM.Update(keyCondition, keyTrigger);
-
 	// ターゲットの更新
 	m_target.Update();
+
+	// 照準の更新
+	m_AIM.Update(keyCondition, keyTrigger);
+	
 }
 
 
 // 描画処理
 void GamePlayScene::Render()
 {
+	// ターゲットの描画
+	m_target.Render(m_ghWheresTarget);
+
 	// 照準の描画
 	m_AIM.Render(m_ghWheresTarget);
 
-	// ターゲットの描画
-	m_target.Render(m_ghWheresTarget);
 }
 
 
 // 終了処理
 void GamePlayScene::Finalize()
 {
+	// ターゲットの終了
+	m_target.Finalize();
+
 	// 照準の終了
 	m_AIM.Finalize();
 
-	// ターゲットの終了
-	m_target.Finalize();
 }
 
 

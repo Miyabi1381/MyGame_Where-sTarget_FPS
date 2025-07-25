@@ -4,8 +4,7 @@
 
 // コンストラクタ
 AIM::AIM()
-	: m_shot{ false }
-	, m_position{ 0}
+	: m_position{ 0}
 {
 }
 
@@ -38,8 +37,7 @@ void AIM::Update(int keyCondition, int keyTrigger)
 	// 左クリックされたら
 	if (keyCondition & MOUSE_INPUT_LEFT)
 	{
-		// 射撃する
-		m_shot = true;
+
 	}
 }
 
