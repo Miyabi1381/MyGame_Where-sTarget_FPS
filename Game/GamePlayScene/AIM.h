@@ -26,7 +26,7 @@ class AIM
 public:
 
 	// 大きさ
-	static constexpr float SIZE = 32.0f;
+	static constexpr float SIZE = 48.0f;
 
 
 	// データメンバの宣言 -------------------------------------------

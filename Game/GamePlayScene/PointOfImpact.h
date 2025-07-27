@@ -9,7 +9,10 @@ private:
 	enum class AnimationState
 	{
 		AnimNone = -1,
-		Anim01, Anim02, Anim03, Anim04,
+		Anim01, 
+		Anim02, 
+		Anim03, 
+		Anim04,
 	};
 
 
@@ -36,7 +39,13 @@ private:
 private:
 
 	// 表示位置
-	
+	POINT m_position;
+
+	// アニメーションステート
+	AnimationState m_animationState;
+
+	// 着弾アニメーションカウンター
+	int m_animationCounter;
 
 
 public:
@@ -44,10 +53,13 @@ public:
 	// コンストラクタ
 	PointOfImpact();
 
-	// デストラクタ
-	~PointOfImpact();
+	// 更新処理
+	void Update();
 
+	// 描画処理
+	void Render(int ghWheresTarget);
 
-private:
+	// 指定した位置に着弾エフェクトを表示する関数
+	void OnHit(POINT position);
 
 };
