@@ -1,10 +1,20 @@
+/**
+* @file AIM.cpp
+*
+* @brief 照準に関するソースファイル
+*
+* @autor Frira
+*
+* @date 2025/07/08
+*/
 #include "AIM.h"
 #include "Game/Screen.h"
 
 
 // コンストラクタ
 AIM::AIM()
-	: m_position{ 0}
+	: m_position{ 0 }
+	, m_pointOfImpact{}
 {
 }
 
@@ -35,10 +45,22 @@ void AIM::Update(int keyCondition, int keyTrigger)
 	m_position.y = static_cast<float>(mouseY) - AIM::SIZE / 2;
 
 	// 左クリックされたら
-	if (keyCondition & MOUSE_INPUT_LEFT)
+	if (GetMouseInput() & MOUSE_INPUT_LEFT)
 	{
 
+		// 弾を発射する(着弾)
+		Vector2D hitPosition =
+		{
+			m_position.x + AIM::SIZE / 2,
+			m_position.y + AIM::SIZE / 2
+		};
+
+		// 着弾エフェクトの表示
+		m_pointOfImpact.PointHit(hitPosition);
 	}
+
+	// 着弾エフェクトの更新
+	m_pointOfImpact.Update();
 }
 
 
@@ -50,6 +72,13 @@ void AIM::Render(int ghWheresTarget)
 						static_cast<int>(m_position.x + AIM::SIZE), static_cast<int>(m_position.y + AIM::SIZE),
 					    0, 0, 64, 64,
 					    ghWheresTarget, TRUE);
+
+	// 着弾エフェクトの描画
+	m_pointOfImpact.Render(ghWheresTarget);
+
+	// デバッグ当たり判定(ちゃくだん)
+	RECT impactBox = m_pointOfImpact.GetBoundingBox();
+	DrawBox(impactBox.left, impactBox.top, impactBox.right, impactBox.bottom, GetColor(0, 0, 255), FALSE);
 
 }
 
@@ -68,4 +97,12 @@ Vector2D AIM::GetCenterPosition()
 		m_position.x + AIM::SIZE / 2,
 		m_position.y + AIM::SIZE / 2
 	};
+}
+
+
+
+// PointOfImpact への参照を取得する
+PointOfImpact& AIM::GetPointOfImpact()
+{
+	return m_pointOfImpact;
 }

@@ -27,6 +27,9 @@ Target::~Target()
 // 初期化関数
 void Target::Initialize(Vector2D position)
 {
+	// アクティブにする
+	m_isActive = true;
+
 	// 出現位置を設定する
 	m_position = position;
 
@@ -43,6 +46,9 @@ void Target::Initialize(Vector2D position)
 // 更新関数
 void Target::Update()
 {
+	// ターゲットが非アクティブなら更新しない
+	if (!m_isActive) return;
+
 	// 緩やかに方向を変える
 	float deltaAngle = ((rand() / (float)RAND_MAX) - 0.5f) * 0.6f;	// -0.3 ～ 0.3f Rad
 	m_angle += deltaAngle;
@@ -76,11 +82,23 @@ void Target::Update()
 // 描画関数
 void Target::Render(int ghShootingGame)
 {
-	// ターゲットの描画
-	DrawRectExtendGraph(static_cast<int>(m_position.x), static_cast<int>(m_position.y), 
-						static_cast<int>(m_position.x) + Target::SIZE, static_cast<int>(m_position.y) + Target::SIZE,
-						64, 0, 64, 64,
-						ghShootingGame, TRUE);
+	// ターゲットが死んだら
+	if (!m_isActive)
+	{
+		// デッドターゲットの描画
+		DrawRectExtendGraph(static_cast<int>(m_position.x), static_cast<int>(m_position.y),
+			static_cast<int>(m_position.x) + Target::SIZE, static_cast<int>(m_position.y) + Target::SIZE / 2,
+			0, 80, 64, 24,
+			ghShootingGame, TRUE);
+	}
+	else
+	{
+		// ターゲットの描画
+		DrawRectExtendGraph(static_cast<int>(m_position.x), static_cast<int>(m_position.y),
+			static_cast<int>(m_position.x) + Target::SIZE / 2, static_cast<int>(m_position.y) + Target::SIZE,
+			80, 0, 32, 64,
+			ghShootingGame, TRUE);
+	}
 }
 
 
@@ -105,12 +123,10 @@ void Target::Spawn(Vector2D position)
 // 境界ボックスを取得する関数
 RECT Target::GetBoundingBox() const
 {
-	RECT rect{};
-
-	rect.left = static_cast<int>(m_position.x);
-	rect.right = static_cast<int>(m_position.x) + Target::SIZE;
-	rect.top = static_cast<int>(m_position.y);
-	rect.bottom = static_cast<int>(m_position.y) + Target::SIZE;
-
-	return rect;
+	return RECT{
+	static_cast<LONG>(m_position.x),
+	static_cast<LONG>(m_position.y),
+	static_cast<LONG>(m_position.x + SIZE),
+	static_cast<LONG>(m_position.y + SIZE)
+	};
 }

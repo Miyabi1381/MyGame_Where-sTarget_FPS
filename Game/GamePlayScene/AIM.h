@@ -15,6 +15,7 @@
 
 
 // ヘッダファイルの読み込み
+#include "PointOfImpact.h"
 #include "Game/GameMath.h"
 
 
@@ -34,7 +35,11 @@ private:
 
 	// 位置
 	Vector2D m_position;
-	
+
+	// 着弾エフェクト
+	PointOfImpact m_pointOfImpact;
+
+
 	// メンバ関数の宣言 ---------------------------------------------
 public:
 
@@ -58,4 +63,7 @@ public:
 
 	// プレイヤーの中心の位置を取得する関数
 	Vector2D GetCenterPosition();
+
+	// PointOfImpact への参照を取得する
+	PointOfImpact& GetPointOfImpact();
 };

@@ -1,4 +1,5 @@
 #include "GamePlayScene.h"
+#include "Game/Game.h"
 
 
 // コンストラクタ
@@ -44,6 +45,20 @@ void GamePlayScene::Update(int keyCondition, int keyTrigger)
 	// 照準の更新
 	m_AIM.Update(keyCondition, keyTrigger);
 	
+	// 衝突判定
+	CheckEnemyColliedWithPlayerBullet();
+
+	// ゲームクリア判定
+	if (IsGameClear())
+	{
+		// ゲームオーバーシーンへ
+		m_pGame->RequestSceneChange(Game::SceneID::GAMEOVER);
+	}
+	else if (IsGameOver())
+	{
+		// ゲームオーバーシーンへ
+		m_pGame->RequestSceneChange(Game::SceneID::GAMEOVER);
+	}
 }
 
 
@@ -53,8 +68,13 @@ void GamePlayScene::Render()
 	// ターゲットの描画
 	m_target.Render(m_ghWheresTarget);
 
+	// デバッグ当たり判定(たーげっと)
+	RECT targetBox = m_target.GetBoundingBox();
+	DrawBox(targetBox.left, targetBox.top, targetBox.right, targetBox.bottom, GetColor(255, 0, 0), FALSE);
+
 	// 照準の描画
 	m_AIM.Render(m_ghWheresTarget);
+	DrawFormatString(10, 30, GetColor(255, 255, 255), L"ゲームプレイシーン");
 
 }
 
@@ -74,6 +94,9 @@ void GamePlayScene::Finalize()
 // ゲームクリアか調べる関数
 bool GamePlayScene::IsGameClear()
 {
+	// ターゲットが死んだらクリア
+	if (!m_target.IsActive()) return true;
+
 	return false;
 }
 
@@ -82,4 +105,31 @@ bool GamePlayScene::IsGameClear()
 bool GamePlayScene::IsGameOver()
 {
 	return false;
+}
+
+
+
+// ターゲットと弾(着弾エフェクト)との衝突判定
+void GamePlayScene::CheckEnemyColliedWithPlayerBullet()
+{
+	// 着弾エフェクトの参照
+	PointOfImpact& pointOfImpact = m_AIM.GetPointOfImpact();
+
+	// 着弾エフェクトのが非アクティブなら判定しない
+	if (!pointOfImpact.IsActive()) return;
+
+	// ターゲットが非アクティブなら判定しない
+	if (!m_target.IsActive()) return;
+
+	// それぞれの矩形を取得
+	RECT pointRect = pointOfImpact.GetBoundingBox();
+	RECT targetRect = m_target.GetBoundingBox();
+
+	// 衝突判定
+	RECT result;
+	if (IntersectRect(&result, &pointRect, &targetRect))
+	{
+		// 当たっていたらターゲットを消す
+		m_target.OnHit();
+	}
 }

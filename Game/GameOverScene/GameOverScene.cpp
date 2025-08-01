@@ -28,6 +28,12 @@ void GameOverScene::Initialize()
 // 更新処理
 void GameOverScene::Update(int keyCondition, int keyTrigger)
 {
+	// ゲームクリアした場合
+	if (true)
+	{
+
+	}
+
 	// スペースキーが押されたら
 	if (keyTrigger & PAD_INPUT_10)
 	{

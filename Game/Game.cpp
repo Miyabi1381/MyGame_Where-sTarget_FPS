@@ -57,6 +57,7 @@ Game::~Game()
 void Game::Initialize()
 {
 	// ゲームの初期化
+	SetMouseDispFlag(FALSE);
 
 	// 起動時のシーンをタイトルに設定する
 	SetStartScene(SceneID::TITLE);

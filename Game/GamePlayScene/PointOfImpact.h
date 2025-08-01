@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Game/GameMath.h"
+
 
 class PointOfImpact
 {
@@ -17,9 +19,9 @@ private:
 
 
 	// 定数宣言
-private:
+public:
 
-	// 着弾アニメーションの感覚
+	// 着弾アニメーションの間隔
 	static constexpr int ANIMATION_INTERVAL = 4;
 
 	// 着弾エフェクトのサイズ
@@ -39,13 +41,16 @@ private:
 private:
 
 	// 表示位置
-	POINT m_position;
+	Vector2D m_position;
 
 	// アニメーションステート
 	AnimationState m_animationState;
 
 	// 着弾アニメーションカウンター
 	int m_animationCounter;
+
+	// アクティブフラグ
+	bool m_isActive;
 
 
 public:
@@ -60,6 +65,14 @@ public:
 	void Render(int ghWheresTarget);
 
 	// 指定した位置に着弾エフェクトを表示する関数
-	void OnHit(POINT position);
+	void PointHit(Vector2D position);
 
+	// 座標を取得する関数
+	Vector2D GetPosition() const { return m_position; }
+
+	// 境界ボックスを取得する関数
+	RECT GetBoundingBox() const;
+
+	// 発射し着弾したかどうかの判定
+	bool IsActive() const { return m_isActive; }
 };

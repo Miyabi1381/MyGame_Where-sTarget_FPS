@@ -20,6 +20,9 @@
 
 #include "Target.h"
 #include "AIM.h"
+#include "PointOfImpact.h"
+
+
 
 
 // クラスの前方宣言
@@ -71,6 +74,8 @@ private:
 	// ゲームの状態
 	GameState m_gameState;
 
+	PointOfImpact m_pointOfImpact;
+
 
 	// メンバ関数の宣言 -------------------------------------------------
 public:
@@ -101,5 +106,8 @@ private:
 
 	// ゲームオーバーか調べる関数
 	bool IsGameOver();
+
+	// ターゲットと弾(着弾エフェクト)との衝突判定
+	void CheckEnemyColliedWithPlayerBullet();
 
 };

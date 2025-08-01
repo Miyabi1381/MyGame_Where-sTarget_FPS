@@ -8,7 +8,7 @@ class Target
 	// クラス定数の宣言 -------------------------------------------------
 public:
 
-	// 大きさ
+	// 縦幅と横幅
 	static constexpr int SIZE = 64;
 
 	// 移動の速さ
@@ -60,6 +60,9 @@ public:
 
 	// 境界ボックスを取得する関数
 	RECT GetBoundingBox() const;
+
+	// 座標を取得する関数
+	Vector2D GetPosition() const { return m_position; }
 
 	// 衝突したら呼び出される関数
 	void OnHit() { m_isActive = false; }
